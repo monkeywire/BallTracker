@@ -3,12 +3,12 @@
 using namespace BallTracker;
 
 CircleXYRadius Tracker::getCircle(int i) {
-	std::lock_guard<std::mutex> guard(mMutex);
+	boost::lock_guard<boost::mutex> lock(mMutex);
 	return mVectorCircles[i];
 }
 
 int Tracker::getCircleCount() {
-	std::lock_guard<std::mutex> guard(mMutex);
+	boost::lock_guard<boost::mutex> lock(mMutex);
 	return mIntCircleCount;
 }
 

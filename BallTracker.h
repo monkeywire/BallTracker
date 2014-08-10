@@ -1,9 +1,9 @@
-#include <opencv\cvaux.h>
-#include <opencv\highgui.h>
-#include <opencv\cxcore.h>
+#include <opencv/cvaux.h>
+#include <opencv/highgui.h>
+#include <opencv/cxcore.h>
 
-#include <thread>
-#include <mutex>
+//#include <thread>
+#include <boost/thread.hpp>
 
 #include <vector>
 
@@ -32,11 +32,11 @@ struct BallTracker::CircleXYRadius {
 
 class BallTracker::Tracker {
 private:
-	std::mutex mMutex;
+	boost::mutex mMutex;
 	CvCapture* p_mCvCapWebCam;
 
 	std::vector<BallTracker::CircleXYRadius> mVectorCircles;
-	int                         mIntCircleCount;
+	int                         mIntCircleCount = 0;
 
 public:
 	int  getWebCam(int i);

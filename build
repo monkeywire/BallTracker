@@ -1,0 +1,2 @@
+g++ TrackBall.cpp BallTracker.cpp -I /usr/include -L /usr/lib -lboost_thread-mt -lopencv_highgui -lopencv_core -lopencv_imgproc -std=c++11 -g
+
