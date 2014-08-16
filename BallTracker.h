@@ -1,14 +1,7 @@
-#include <opencv/cvaux.h>
-#include <opencv/highgui.h>
-#include <opencv/cxcore.h>
-
-//#include <thread>
-#include <boost/thread.hpp>
-
 #include <vector>
+#include <opencv/highgui.h>
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <boost/thread.hpp>
 
 #define ORIGINAL_WINDOW  "Original Window"
 #define PROCESSED_WINDOW "Processed Window"

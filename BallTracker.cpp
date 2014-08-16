@@ -1,5 +1,14 @@
 #include "BallTracker.h"
 
+#include <opencv/cvaux.h>
+#include <opencv/highgui.h>
+#include <opencv/cxcore.h>
+
+#include <boost/thread.hpp>
+
+#include <stdio.h>
+#include <stdlib.h>
+
 using namespace BallTracker;
 
 CircleXYRadius Tracker::getCircle(int i) {
@@ -28,7 +37,7 @@ void Tracker::spawnThread() {
 
 	IplImage* p_imgProcessed;
 	IplImage* p_imgOriginal;
-	
+
 	CvSeq* p_cvSeqCircles;
 
 	float* p_fltXYRadius;
@@ -61,7 +70,7 @@ void Tracker::spawnThread() {
 
 		p_cvSeqCircles = cvHoughCircles(p_imgProcessed, p_cvMemStore, CV_HOUGH_GRADIENT, 2, p_imgProcessed->height / 4, 100, 50, 10, 400);
 
-		mMutex.lock(); 
+		mMutex.lock();
 		mIntCircleCount = p_cvSeqCircles->total;
 		mVectorCircles.clear();
 		for (i = 0; i < p_cvSeqCircles->total; i++) {
